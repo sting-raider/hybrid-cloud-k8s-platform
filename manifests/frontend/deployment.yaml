@@ -24,7 +24,7 @@ spec:
               app: frontend-web
       containers:
         - name: frontend
-          image: nginx:1.25-alpine
+          image: nginx:1.27-alpine
           ports:
             - containerPort: 80
           resources:
@@ -34,6 +34,13 @@ spec:
             limits:
               memory: "64Mi"
               cpu: "100m"
+          volumeMounts:
+            - name: html
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: html
+          configMap:
+            name: frontend-html
 ---
 apiVersion: v1
 kind: Service

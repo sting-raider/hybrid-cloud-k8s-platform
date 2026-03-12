@@ -1,0 +1,301 @@
+apiVersion: v1
+data:
+  index.html: "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta
+    name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Open
+    Cloud — Hybrid Multi-Cloud Platform</title>\n<link href=\"https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap\"
+    rel=\"stylesheet\">\n<style>\n  :root {\n    --bg: #050810;\n    --surface: #0a0f1e;\n
+    \   --border: #1a2340;\n    --accent: #00f5a0;\n    --accent2: #00b4d8;\n    --accent3:
+    #ff6b35;\n    --aws: #ff9900;\n    --gcp: #4285f4;\n    --local: #00f5a0;\n    --text:
+    #e8eaf6;\n    --muted: #4a5580;\n    --danger: #ff4757;\n  }\n\n  * { margin:
+    0; padding: 0; box-sizing: border-box; }\n\n  body {\n    background: var(--bg);\n
+    \   color: var(--text);\n    font-family: 'Syne', sans-serif;\n    min-height:
+    100vh;\n    overflow-x: hidden;\n  }\n\n  /* Animated grid background */\n  body::before
+    {\n    content: '';\n    position: fixed;\n    inset: 0;\n    background-image:
+    \n      linear-gradient(rgba(0,245,160,0.03) 1px, transparent 1px),\n      linear-gradient(90deg,
+    rgba(0,245,160,0.03) 1px, transparent 1px);\n    background-size: 40px 40px;\n
+    \   pointer-events: none;\n    z-index: 0;\n  }\n\n  /* Glowing orbs */\n  .orb
+    {\n    position: fixed;\n    border-radius: 50%;\n    filter: blur(120px);\n    pointer-events:
+    none;\n    z-index: 0;\n    animation: drift 8s ease-in-out infinite alternate;\n
+    \ }\n  .orb-1 { width: 500px; height: 500px; background: rgba(0,245,160,0.06);
+    top: -100px; left: -100px; }\n  .orb-2 { width: 400px; height: 400px; background:
+    rgba(0,180,216,0.06); bottom: -100px; right: -100px; animation-delay: -4s; }\n
+    \ .orb-3 { width: 300px; height: 300px; background: rgba(255,107,53,0.04); top:
+    50%; left: 50%; animation-delay: -2s; }\n\n  @keyframes drift {\n    from { transform:
+    translate(0,0) scale(1); }\n    to { transform: translate(30px, 20px) scale(1.1);
+    }\n  }\n\n  /* Layout */\n  .container {\n    position: relative;\n    z-index:
+    1;\n    max-width: 1400px;\n    margin: 0 auto;\n    padding: 0 32px;\n  }\n\n
+    \ /* Header */\n  header {\n    padding: 24px 0;\n    border-bottom: 1px solid
+    var(--border);\n    position: relative;\n    z-index: 1;\n  }\n\n  .header-inner
+    {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n
+    \ }\n\n  .logo {\n    display: flex;\n    align-items: center;\n    gap: 12px;\n
+    \ }\n\n  .logo-icon {\n    width: 40px;\n    height: 40px;\n    background: linear-gradient(135deg,
+    var(--accent), var(--accent2));\n    border-radius: 10px;\n    display: flex;\n
+    \   align-items: center;\n    justify-content: center;\n    font-size: 20px;\n
+    \ }\n\n  .logo-text {\n    font-size: 20px;\n    font-weight: 800;\n    letter-spacing:
+    -0.5px;\n  }\n\n  .logo-text span { color: var(--accent); }\n\n  .status-pill
+    {\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    background:
+    rgba(0,245,160,0.08);\n    border: 1px solid rgba(0,245,160,0.2);\n    padding:
+    6px 14px;\n    border-radius: 100px;\n    font-family: 'Space Mono', monospace;\n
+    \   font-size: 12px;\n    color: var(--accent);\n  }\n\n  .pulse {\n    width:
+    8px;\n    height: 8px;\n    background: var(--accent);\n    border-radius: 50%;\n
+    \   animation: pulse 2s ease-in-out infinite;\n  }\n\n  @keyframes pulse {\n    0%,
+    100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,245,160,0.4); }\n    50% { opacity:
+    0.7; box-shadow: 0 0 0 6px rgba(0,245,160,0); }\n  }\n\n  /* Hero */\n  .hero
+    {\n    padding: 80px 0 60px;\n    text-align: center;\n  }\n\n  .hero-tag {\n
+    \   display: inline-block;\n    font-family: 'Space Mono', monospace;\n    font-size:
+    11px;\n    color: var(--accent);\n    letter-spacing: 3px;\n    text-transform:
+    uppercase;\n    margin-bottom: 24px;\n    padding: 6px 16px;\n    border: 1px
+    solid rgba(0,245,160,0.3);\n    border-radius: 4px;\n  }\n\n  .hero h1 {\n    font-size:
+    clamp(42px, 7vw, 88px);\n    font-weight: 800;\n    line-height: 0.95;\n    letter-spacing:
+    -3px;\n    margin-bottom: 24px;\n  }\n\n  .hero h1 .line2 {\n    display: block;\n
+    \   background: linear-gradient(90deg, var(--accent), var(--accent2));\n    -webkit-background-clip:
+    text;\n    -webkit-text-fill-color: transparent;\n    background-clip: text;\n
+    \ }\n\n  .hero p {\n    font-size: 18px;\n    color: var(--muted);\n    max-width:
+    560px;\n    margin: 0 auto 48px;\n    line-height: 1.6;\n    font-weight: 400;\n
+    \ }\n\n  .hero-actions {\n    display: flex;\n    gap: 16px;\n    justify-content:
+    center;\n    flex-wrap: wrap;\n  }\n\n  .btn {\n    padding: 14px 32px;\n    border-radius:
+    8px;\n    font-family: 'Space Mono', monospace;\n    font-size: 13px;\n    font-weight:
+    700;\n    cursor: pointer;\n    border: none;\n    text-decoration: none;\n    transition:
+    all 0.2s;\n    display: inline-flex;\n    align-items: center;\n    gap: 8px;\n
+    \ }\n\n  .btn-primary {\n    background: var(--accent);\n    color: #000;\n  }\n
+    \ .btn-primary:hover { background: #00ffaa; transform: translateY(-2px); box-shadow:
+    0 8px 30px rgba(0,245,160,0.3); }\n\n  .btn-secondary {\n    background: transparent;\n
+    \   color: var(--text);\n    border: 1px solid var(--border);\n  }\n  .btn-secondary:hover
+    { border-color: var(--accent); color: var(--accent); transform: translateY(-2px);
+    }\n\n  /* Architecture diagram */\n  .arch-section {\n    padding: 60px 0;\n  }\n\n
+    \ .section-label {\n    font-family: 'Space Mono', monospace;\n    font-size:
+    11px;\n    color: var(--muted);\n    letter-spacing: 3px;\n    text-transform:
+    uppercase;\n    margin-bottom: 48px;\n    display: flex;\n    align-items: center;\n
+    \   gap: 16px;\n  }\n\n  .section-label::after {\n    content: '';\n    flex:
+    1;\n    height: 1px;\n    background: var(--border);\n  }\n\n  .arch-diagram {\n
+    \   display: grid;\n    grid-template-columns: 1fr auto 1fr auto 1fr;\n    align-items:
+    center;\n    gap: 0;\n    background: var(--surface);\n    border: 1px solid var(--border);\n
+    \   border-radius: 20px;\n    padding: 40px;\n    position: relative;\n    overflow:
+    hidden;\n  }\n\n  .arch-diagram::before {\n    content: '';\n    position: absolute;\n
+    \   inset: 0;\n    background: radial-gradient(ellipse at 50% 50%, rgba(0,245,160,0.03),
+    transparent 70%);\n    pointer-events: none;\n  }\n\n  .node-card {\n    background:
+    var(--bg);\n    border: 1px solid var(--border);\n    border-radius: 16px;\n    padding:
+    28px 24px;\n    text-align: center;\n    position: relative;\n    transition:
+    all 0.3s;\n  }\n\n  .node-card:hover {\n    transform: translateY(-4px);\n    box-shadow:
+    0 20px 40px rgba(0,0,0,0.4);\n  }\n\n  .node-card.local { border-color: rgba(0,245,160,0.3);
+    }\n  .node-card.local:hover { box-shadow: 0 20px 40px rgba(0,245,160,0.1); }\n
+    \ .node-card.aws { border-color: rgba(255,153,0,0.3); }\n  .node-card.aws:hover
+    { box-shadow: 0 20px 40px rgba(255,153,0,0.1); }\n  .node-card.gcp { border-color:
+    rgba(66,133,244,0.3); }\n  .node-card.gcp:hover { box-shadow: 0 20px 40px rgba(66,133,244,0.1);
+    }\n\n  .node-icon { font-size: 36px; margin-bottom: 12px; }\n\n  .node-name {\n
+    \   font-size: 16px;\n    font-weight: 700;\n    margin-bottom: 4px;\n  }\n\n
+    \ .node-sub {\n    font-family: 'Space Mono', monospace;\n    font-size: 11px;\n
+    \   color: var(--muted);\n    margin-bottom: 16px;\n  }\n\n  .node-badge {\n    display:
+    inline-block;\n    padding: 4px 12px;\n    border-radius: 100px;\n    font-family:
+    'Space Mono', monospace;\n    font-size: 10px;\n    font-weight: 700;\n  }\n\n
+    \ .badge-local { background: rgba(0,245,160,0.15); color: var(--accent); }\n  .badge-aws
+    { background: rgba(255,153,0,0.15); color: var(--aws); }\n  .badge-gcp { background:
+    rgba(66,133,244,0.15); color: var(--gcp); }\n  .badge-offline { background: rgba(255,71,87,0.15);
+    color: var(--danger); }\n\n  .connector {\n    display: flex;\n    flex-direction:
+    column;\n    align-items: center;\n    gap: 6px;\n    padding: 0 16px;\n  }\n\n
+    \ .connector-line {\n    width: 80px;\n    height: 2px;\n    background: linear-gradient(90deg,
+    transparent, var(--accent2), transparent);\n    position: relative;\n    overflow:
+    hidden;\n  }\n\n  .connector-line::after {\n    content: '';\n    position: absolute;\n
+    \   top: 0;\n    left: -100%;\n    width: 100%;\n    height: 100%;\n    background:
+    linear-gradient(90deg, transparent, white, transparent);\n    animation: flow
+    2s linear infinite;\n  }\n\n  @keyframes flow {\n    to { left: 100%; }\n  }\n\n
+    \ .connector-label {\n    font-family: 'Space Mono', monospace;\n    font-size:
+    9px;\n    color: var(--muted);\n    letter-spacing: 1px;\n  }\n\n  /* Live stats
+    */\n  .stats-grid {\n    display: grid;\n    grid-template-columns: repeat(4,
+    1fr);\n    gap: 16px;\n    padding: 60px 0 0;\n  }\n\n  .stat-card {\n    background:
+    var(--surface);\n    border: 1px solid var(--border);\n    border-radius: 16px;\n
+    \   padding: 28px;\n    position: relative;\n    overflow: hidden;\n    transition:
+    all 0.3s;\n  }\n\n  .stat-card:hover { border-color: rgba(0,245,160,0.2); transform:
+    translateY(-2px); }\n\n  .stat-card::before {\n    content: '';\n    position:
+    absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    height: 2px;\n    background:
+    linear-gradient(90deg, var(--accent), var(--accent2));\n    opacity: 0;\n    transition:
+    opacity 0.3s;\n  }\n\n  .stat-card:hover::before { opacity: 1; }\n\n  .stat-label
+    {\n    font-family: 'Space Mono', monospace;\n    font-size: 10px;\n    color:
+    var(--muted);\n    letter-spacing: 2px;\n    text-transform: uppercase;\n    margin-bottom:
+    12px;\n  }\n\n  .stat-value {\n    font-size: 36px;\n    font-weight: 800;\n    letter-spacing:
+    -2px;\n    margin-bottom: 4px;\n  }\n\n  .stat-value.green { color: var(--accent);
+    }\n  .stat-value.blue { color: var(--accent2); }\n  .stat-value.orange { color:
+    var(--aws); }\n  .stat-value.red { color: var(--danger); }\n\n  .stat-meta {\n
+    \   font-size: 13px;\n    color: var(--muted);\n  }\n\n  /* Pod grid */\n  .pods-section
+    { padding: 60px 0; }\n\n  .pods-header {\n    display: flex;\n    justify-content:
+    space-between;\n    align-items: center;\n    margin-bottom: 24px;\n  }\n\n  .pods-title
+    {\n    font-size: 22px;\n    font-weight: 700;\n  }\n\n  .pods-grid {\n    display:
+    grid;\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\n    gap:
+    16px;\n  }\n\n  .pod-card {\n    background: var(--surface);\n    border: 1px
+    solid var(--border);\n    border-radius: 12px;\n    padding: 20px;\n    display:
+    flex;\n    align-items: center;\n    gap: 16px;\n    transition: all 0.2s;\n    animation:
+    fadeIn 0.5s ease forwards;\n    opacity: 0;\n  }\n\n  @keyframes fadeIn {\n    to
+    { opacity: 1; transform: translateY(0); }\n    from { opacity: 0; transform: translateY(10px);
+    }\n  }\n\n  .pod-card:nth-child(1) { animation-delay: 0.1s; }\n  .pod-card:nth-child(2)
+    { animation-delay: 0.2s; }\n  .pod-card:nth-child(3) { animation-delay: 0.3s;
+    }\n  .pod-card:nth-child(4) { animation-delay: 0.4s; }\n\n  .pod-card:hover {
+    border-color: rgba(0,245,160,0.2); background: rgba(0,245,160,0.03); }\n\n  .pod-indicator
+    {\n    width: 10px;\n    height: 10px;\n    border-radius: 50%;\n    flex-shrink:
+    0;\n  }\n\n  .pod-indicator.running { background: var(--accent); box-shadow: 0
+    0 8px rgba(0,245,160,0.6); animation: pulse 2s infinite; }\n  .pod-indicator.pending
+    { background: var(--aws); animation: pulse 1s infinite; }\n  .pod-indicator.error
+    { background: var(--danger); }\n\n  .pod-info { flex: 1; min-width: 0; }\n\n  .pod-name
+    {\n    font-family: 'Space Mono', monospace;\n    font-size: 12px;\n    color:
+    var(--text);\n    margin-bottom: 4px;\n    white-space: nowrap;\n    overflow:
+    hidden;\n    text-overflow: ellipsis;\n  }\n\n  .pod-node {\n    font-size: 12px;\n
+    \   color: var(--muted);\n  }\n\n  .pod-cloud {\n    font-family: 'Space Mono',
+    monospace;\n    font-size: 10px;\n    padding: 3px 10px;\n    border-radius: 100px;\n
+    \   flex-shrink: 0;\n  }\n\n  .pod-cloud.aws { background: rgba(255,153,0,0.15);
+    color: var(--aws); }\n  .pod-cloud.local { background: rgba(0,245,160,0.15); color:
+    var(--accent); }\n  .pod-cloud.gcp { background: rgba(66,133,244,0.15); color:
+    var(--gcp); }\n\n  /* How it works */\n  .how-section { padding: 80px 0; border-top:
+    1px solid var(--border); }\n\n  .how-grid {\n    display: grid;\n    grid-template-columns:
+    repeat(3, 1fr);\n    gap: 2px;\n    background: var(--border);\n    border: 1px
+    solid var(--border);\n    border-radius: 20px;\n    overflow: hidden;\n  }\n\n
+    \ .how-step {\n    background: var(--surface);\n    padding: 40px 32px;\n    position:
+    relative;\n    transition: background 0.3s;\n  }\n\n  .how-step:hover { background:
+    #0d1428; }\n\n  .step-num {\n    font-family: 'Space Mono', monospace;\n    font-size:
+    64px;\n    font-weight: 700;\n    color: var(--border);\n    line-height: 1;\n
+    \   margin-bottom: 24px;\n    display: block;\n  }\n\n  .step-title {\n    font-size:
+    20px;\n    font-weight: 700;\n    margin-bottom: 12px;\n  }\n\n  .step-desc {\n
+    \   font-size: 14px;\n    color: var(--muted);\n    line-height: 1.7;\n  }\n\n
+    \ .step-icon {\n    font-size: 28px;\n    margin-bottom: 16px;\n    display: block;\n
+    \ }\n\n  /* Terminal block */\n  .terminal {\n    background: #000;\n    border:
+    1px solid var(--border);\n    border-radius: 12px;\n    overflow: hidden;\n    margin:
+    48px 0;\n  }\n\n  .terminal-bar {\n    background: #111;\n    padding: 12px 16px;\n
+    \   display: flex;\n    align-items: center;\n    gap: 8px;\n    border-bottom:
+    1px solid var(--border);\n  }\n\n  .dot { width: 12px; height: 12px; border-radius:
+    50%; }\n  .dot-r { background: #ff5f57; }\n  .dot-y { background: #febc2e; }\n
+    \ .dot-g { background: #28c840; }\n\n  .terminal-title {\n    font-family: 'Space
+    Mono', monospace;\n    font-size: 11px;\n    color: var(--muted);\n    margin-left:
+    8px;\n  }\n\n  .terminal-body {\n    padding: 24px;\n    font-family: 'Space Mono',
+    monospace;\n    font-size: 13px;\n    line-height: 2;\n  }\n\n  .t-comment { color:
+    #4a5580; }\n  .t-cmd { color: var(--accent); }\n  .t-out { color: #8892b0; }\n
+    \ .t-highlight { color: #fff; }\n  .t-aws { color: var(--aws); }\n  .t-gcp { color:
+    var(--gcp); }\n  .t-success { color: var(--accent); }\n\n  /* Footer */\n  footer
+    {\n    border-top: 1px solid var(--border);\n    padding: 32px 0;\n    display:
+    flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n\n
+    \ .footer-text {\n    font-family: 'Space Mono', monospace;\n    font-size: 12px;\n
+    \   color: var(--muted);\n  }\n\n  .footer-links {\n    display: flex;\n    gap:
+    24px;\n  }\n\n  .footer-links a {\n    font-family: 'Space Mono', monospace;\n
+    \   font-size: 12px;\n    color: var(--muted);\n    text-decoration: none;\n    transition:
+    color 0.2s;\n  }\n\n  .footer-links a:hover { color: var(--accent); }\n\n  /*
+    Section title */\n  .section-title {\n    font-size: 36px;\n    font-weight: 800;\n
+    \   letter-spacing: -1px;\n    margin-bottom: 8px;\n  }\n\n  .section-subtitle
+    {\n    color: var(--muted);\n    font-size: 15px;\n    margin-bottom: 48px;\n
+    \ }\n\n  /* Responsive */\n  @media (max-width: 900px) {\n    .arch-diagram {
+    grid-template-columns: 1fr; gap: 16px; }\n    .connector { display: none; }\n
+    \   .stats-grid { grid-template-columns: repeat(2, 1fr); }\n    .how-grid { grid-template-columns:
+    1fr; }\n    footer { flex-direction: column; gap: 16px; text-align: center; }\n
+    \ }\n\n  @media (max-width: 600px) {\n    .stats-grid { grid-template-columns:
+    1fr; }\n    .hero h1 { letter-spacing: -2px; }\n  }\n</style>\n</head>\n<body>\n\n<div
+    class=\"orb orb-1\"></div>\n<div class=\"orb orb-2\"></div>\n<div class=\"orb
+    orb-3\"></div>\n\n<header>\n  <div class=\"container\">\n    <div class=\"header-inner\">\n
+    \     <div class=\"logo\">\n        <div class=\"logo-icon\">\U0001F41D</div>\n
+    \       <div class=\"logo-text\">Fr<span>ee</span> Cloud</div>\n      </div>\n
+    \     <div class=\"status-pill\">\n        <div class=\"pulse\"></div>\n        ALL
+    SYSTEMS OPERATIONAL\n      </div>\n    </div>\n  </div>\n</header>\n\n<main>\n
+    \ <div class=\"container\">\n\n    <!-- Hero -->\n    <section class=\"hero\">\n
+    \     <div class=\"hero-tag\">⚡ Hybrid Multi-Cloud · GitOps · K3s + Tailscale</div>\n
+    \     <h1>\n        Deploy Anywhere.<br>\n        <span class=\"line2\">Automatically.</span>\n
+    \     </h1>\n      <p>Push to GitHub. Watch your app deploy across AWS, GCP, and
+    bare-metal — simultaneously. No DevOps degree required.</p>\n      <div class=\"hero-actions\">\n
+    \       <a href=\"https://github.com/sting-raider/hybrid-cloud-k8s-platform\"
+    class=\"btn btn-primary\" target=\"_blank\">\n          \U0001F680 Deploy Your
+    App\n        </a>\n        <a href=\"https://github.com/sting-raider/hybrid-cloud-k8s-platform\"
+    class=\"btn btn-secondary\" target=\"_blank\">\n          View on GitHub →\n        </a>\n
+    \     </div>\n    </section>\n\n    <!-- Architecture -->\n    <section class=\"arch-section\">\n
+    \     <div class=\"section-label\">Live Cluster Topology</div>\n\n      <div class=\"arch-diagram\">\n
+    \       <!-- Local node -->\n        <div class=\"node-card local\">\n          <div
+    class=\"node-icon\">\U0001F5A5️</div>\n          <div class=\"node-name\">stingraider</div>\n
+    \         <div class=\"node-sub\">Vellore, India · Control Plane</div>\n          <div
+    style=\"margin-bottom:12px\">\n            <span class=\"node-badge badge-local\">●
+    READY</span>\n          </div>\n          <div style=\"font-family:'Space Mono',monospace;font-size:10px;color:var(--muted)\">\n
+    \           ArgoCD · MySQL · K3s Master\n          </div>\n        </div>\n\n
+    \       <!-- Connector -->\n        <div class=\"connector\">\n          <div
+    class=\"connector-line\"></div>\n          <div class=\"connector-label\">TAILSCALE
+    VPN</div>\n          <div class=\"connector-label\">100.x.x.x</div>\n        </div>\n\n
+    \       <!-- AWS node -->\n        <div class=\"node-card aws\">\n          <div
+    class=\"node-icon\">☁️</div>\n          <div class=\"node-name\">AWS EC2</div>\n
+    \         <div class=\"node-sub\">us-east-1 · t2.micro · 1GB RAM</div>\n          <div
+    style=\"margin-bottom:12px\">\n            <span class=\"node-badge badge-aws\">●
+    READY</span>\n          </div>\n          <div style=\"font-family:'Space Mono',monospace;font-size:10px;color:var(--muted)\">\n
+    \           Worker Node · Frontend Pod\n          </div>\n        </div>\n\n        <!--
+    Connector -->\n        <div class=\"connector\">\n          <div class=\"connector-line\"></div>\n
+    \         <div class=\"connector-label\">TAILSCALE VPN</div>\n          <div class=\"connector-label\">100.x.x.x</div>\n
+    \       </div>\n\n        <!-- GCP node -->\n        <div class=\"node-card gcp\">\n
+    \         <div class=\"node-icon\">\U0001F310</div>\n          <div class=\"node-name\">GCP
+    Worker</div>\n          <div class=\"node-sub\">us-central1 · Coming Soon</div>\n
+    \         <div style=\"margin-bottom:12px\">\n            <span class=\"node-badge
+    badge-offline\">● OFFLINE</span>\n          </div>\n          <div style=\"font-family:'Space
+    Mono',monospace;font-size:10px;color:var(--muted)\">\n            Worker Node
+    · Pending Join\n          </div>\n        </div>\n      </div>\n\n      <!-- Stats
+    -->\n      <div class=\"stats-grid\">\n        <div class=\"stat-card\">\n          <div
+    class=\"stat-label\">Active Pods</div>\n          <div class=\"stat-value green\">12</div>\n
+    \         <div class=\"stat-meta\">across 2 clouds</div>\n        </div>\n        <div
+    class=\"stat-card\">\n          <div class=\"stat-label\">GitOps Syncs</div>\n
+    \         <div class=\"stat-value blue\">47</div>\n          <div class=\"stat-meta\">auto-reconciled</div>\n
+    \       </div>\n        <div class=\"stat-card\">\n          <div class=\"stat-label\">Uptime</div>\n
+    \         <div class=\"stat-value green\">99.9%</div>\n          <div class=\"stat-meta\">last
+    30 days</div>\n        </div>\n        <div class=\"stat-card\">\n          <div
+    class=\"stat-label\">Deploy Time</div>\n          <div class=\"stat-value orange\">~3m</div>\n
+    \         <div class=\"stat-meta\">git push → live</div>\n        </div>\n      </div>\n
+    \   </section>\n\n    <!-- Live Pods -->\n    <section class=\"pods-section\">\n
+    \     <div class=\"pods-header\">\n        <div class=\"pods-title\">Live Workloads</div>\n
+    \       <div class=\"status-pill\" style=\"font-size:11px\">\n          <div class=\"pulse\"></div>\n
+    \         REAL-TIME\n        </div>\n      </div>\n      <div class=\"pods-grid\">\n
+    \       <div class=\"pod-card\">\n          <div class=\"pod-indicator running\"></div>\n
+    \         <div class=\"pod-info\">\n            <div class=\"pod-name\">frontend-web-755fcf78d6-9qspn</div>\n
+    \           <div class=\"pod-node\">ip-172-31-22-150 · nginx:1.27-alpine</div>\n
+    \         </div>\n          <div class=\"pod-cloud aws\">AWS</div>\n        </div>\n
+    \       <div class=\"pod-card\">\n          <div class=\"pod-indicator running\"></div>\n
+    \         <div class=\"pod-info\">\n            <div class=\"pod-name\">frontend-web-755fcf78d6-tvzbv</div>\n
+    \           <div class=\"pod-node\">stingraider · nginx:1.27-alpine</div>\n          </div>\n
+    \         <div class=\"pod-cloud local\">LOCAL</div>\n        </div>\n        <div
+    class=\"pod-card\">\n          <div class=\"pod-indicator running\"></div>\n          <div
+    class=\"pod-info\">\n            <div class=\"pod-name\">mysql-db-fcb4dd844-7pxb5</div>\n
+    \           <div class=\"pod-node\">stingraider · mysql:8.0</div>\n          </div>\n
+    \         <div class=\"pod-cloud local\">LOCAL</div>\n        </div>\n        <div
+    class=\"pod-card\">\n          <div class=\"pod-indicator running\"></div>\n          <div
+    class=\"pod-info\">\n            <div class=\"pod-name\">argocd-server-74968c4c84</div>\n
+    \           <div class=\"pod-node\">stingraider · argocd:v3.3.3</div>\n          </div>\n
+    \         <div class=\"pod-cloud local\">LOCAL</div>\n        </div>\n      </div>\n
+    \   </section>\n\n    <!-- Terminal -->\n    <div class=\"terminal\">\n      <div
+    class=\"terminal-bar\">\n        <div class=\"dot dot-r\"></div>\n        <div
+    class=\"dot dot-y\"></div>\n        <div class=\"dot dot-g\"></div>\n        <span
+    class=\"terminal-title\">stingraider — kubectl get pods -o wide</span>\n      </div>\n
+    \     <div class=\"terminal-body\">\n        <div><span class=\"t-comment\">#
+    GitOps sync triggered by git push to main</span></div>\n        <div><span class=\"t-cmd\">$
+    git push origin main</span></div>\n        <div><span class=\"t-out\">  → Pushing
+    manifests/frontend/deployment.yaml</span></div>\n        <div><span class=\"t-success\">
+    \ ✓ ArgoCD detected change: nginx:1.25 → nginx:1.27</span></div>\n        <div>&nbsp;</div>\n
+    \       <div><span class=\"t-cmd\">$ kubectl get pods -o wide -l app=frontend-web</span></div>\n
+    \       <div><span class=\"t-highlight\">NAME                             READY
+    \ STATUS   NODE</span></div>\n        <div><span class=\"t-aws\">frontend-web-755fcf-9qspn
+    \       1/1    Running  ip-172-31-22-150  ← AWS</span></div>\n        <div><span
+    class=\"t-success\">frontend-web-755fcf-tvzbv        1/1    Running  stingraider
+    \      ← LOCAL</span></div>\n        <div>&nbsp;</div>\n        <div><span class=\"t-comment\">#
+    One pod in the cloud. One pod on bare metal. Zero manual steps.</span></div>\n
+    \     </div>\n    </div>\n\n    <!-- How it works -->\n    <section class=\"how-section\">\n
+    \     <div class=\"section-label\">How It Works</div>\n      <div class=\"section-title\">Three
+    steps to multi-cloud.</div>\n      <div class=\"section-subtitle\">No Kubernetes
+    expertise needed. Just push code.</div>\n\n      <div class=\"how-grid\">\n        <div
+    class=\"how-step\">\n          <span class=\"step-num\">01</span>\n          <span
+    class=\"step-icon\">\U0001F4C1</span>\n          <div class=\"step-title\">Fork
+    & Drop Your App</div>\n          <div class=\"step-desc\">Fork the GitHub repo.
+    Drop your app's Kubernetes manifest (or use the template) into <code style=\"color:var(--accent);font-family:'Space
+    Mono',monospace\">manifests/your-app/</code>. That's it.</div>\n        </div>\n
+    \       <div class=\"how-step\">\n          <span class=\"step-num\">02</span>\n
+    \         <span class=\"step-icon\">\U0001F517</span>\n          <div class=\"step-title\">Connect
+    to ArgoCD</div>\n          <div class=\"step-desc\">Link your forked repo to the
+    ArgoCD instance. ArgoCD watches your repo 24/7 and auto-syncs any changes directly
+    to the cluster.</div>\n        </div>\n        <div class=\"how-step\">\n          <span
+    class=\"step-num\">03</span>\n          <span class=\"step-icon\">\U0001F680</span>\n
+    \         <div class=\"step-title\">Push. It Deploys.</div>\n          <div class=\"step-desc\">Every
+    <code style=\"color:var(--accent);font-family:'Space Mono',monospace\">git push</code>
+    to main triggers an automatic rollout across AWS, GCP, and bare-metal nodes simultaneously.</div>\n
+    \       </div>\n      </div>\n    </section>\n\n  </div>\n</main>\n\n<footer>\n
+    \ <div class=\"container\" style=\"display:flex;justify-content:space-between;align-items:center;width:100%\">\n
+    \   <div class=\"footer-text\">Built by stingraider · Vellore, India \U0001F1EE\U0001F1F3
+    · K3s + Tailscale + ArgoCD</div>\n    <div class=\"footer-links\">\n      <a href=\"https://github.com/sting-raider/hybrid-cloud-k8s-platform\"
+    target=\"_blank\">GitHub</a>\n      <a href=\"#\">ArgoCD UI</a>\n      <a href=\"#\">Docs</a>\n
+    \   </div>\n  </div>\n</footer>\n\n</body>\n</html>\n"
+kind: ConfigMap
+metadata:
+  name: frontend-html
+  namespace: default
